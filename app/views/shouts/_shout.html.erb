@@ -1,3 +1,4 @@
 <%= content_tag_for(:div, shout) do %>
-  <%= link_to shout.body, shout %> <%= time_ago_in_words(shout.created_at) %> ago
+  <%= render shout.medium %>
+  <%= time_ago_in_words(shout.created_at) %> ago
 <% end %>
