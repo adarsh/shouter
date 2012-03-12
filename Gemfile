@@ -12,8 +12,8 @@ gem 'sqlite3'
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'bourne'
 end
-
 
 # Gems used only for assets and not required
 # in production environments by default.

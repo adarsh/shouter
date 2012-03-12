@@ -1,6 +1,10 @@
 FactoryGirl.define do
   factory :shout do
-    body "some text"
     user
+  end
+
+  factory :text_shout do
+    body "some text"
+    shout
   end
 end
