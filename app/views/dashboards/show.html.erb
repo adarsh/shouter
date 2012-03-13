@@ -1,15 +1,26 @@
-<h1>Dashboard</h1>
-Welcome <%= current_user.email %> - <%= link_to "Sign out", sign_out_path, method: :delete %>
-
-<%= form_for(@text_shout) do |form| %>
-  <%= form.text_field :body, placeholder: "Shout here" %>
-  <%= form.submit "Shout!" %>
-<% end %>
-<%= form_for(@photo_shout) do |form| %>
-  <%= form.file_field :photo %>
-  <%= form.submit "Shout!" %>
-<% end %>
-
-<div id="shouts">
-  <%= render @shouts %>
-</div>
+<span class="row">
+  <span class="span3">
+    <h3><%= current_user.email %></h3>
+    <div id='shout_forms'>
+      <a href="#text_shout" class='shout-toggle' data-toggle="collapse" data-parent="#shout_forms">Shout with text</a>
+      <div class="accordion-body collapse in" id="text_shout">
+        <%= form_for(@text_shout, html: { class: "well form-inline" }) do |form| %>
+          <%= form.text_field :body, placeholder: "Shout here", class: "input-medium" %>
+          <%= form.submit "Shout!", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <a href="#photo_shout" class='shout-toggle' data-toggle="collapse" data-parent="#shout_forms">Shout with a photo</a>
+      <div id="photo_shout" class="accordion-body collapse">
+        <%= form_for(@photo_shout, html: { class: "well form-inline" }) do |form| %>
+          <%= form.file_field :photo, class: "input-medium" %>
+          <%= form.submit "Shout!", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </span>
+  <span class="span8">
+    <div id="shouts">
+      <%= render @shouts %>
+    </div>
+  </span>
+</span>
